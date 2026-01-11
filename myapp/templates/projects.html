@@ -4,14 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Proyectos</title>
+    <title>Proyectos</title>
 </head>
 
 <body>
     {% extends "base.html" %}
     {% block content %}
-    <h1>DASHBOARD</h1>
-    <p>Bienvenido al Centro de Proyectos. Aquí puedes gestionar tus proyectos y tareas de manera eficiente.</p>
+    <h1>Proyectos</h1>
+
+    <ol>
+        {% for project in projects %}
+        <li>{{ project.name }}</li>
+        {% endfor %}
+    </ol>
     {% endblock %}
 </body>
 

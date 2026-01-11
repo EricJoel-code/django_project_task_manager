@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tareas</h1>
+
+<section>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <div class="d-flex align-items-center gap-2">
+                <h2 class="mb-0">{{ task.title }}</h2>
+
+                {% if not task.completed %}
+                <strong class="text-danger small">Pendiente</strong>
+                {% else %}
+                <strong class="text-success small">Completada</strong>
+                {% endif %}
+            </div>
+
+            <hr>
+
+            <p>{{ task.description }}</p>
+            <p>Pertenece al Proyecto: {{ task.project }}</p>
+
+            <button>Delete</button>
+            <button>✅ Complete</button>
+
+            <hr>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
