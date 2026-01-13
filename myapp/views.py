@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
-#from django.http import  HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Project, Task
+from .forms import TaskForm
 # Create your views here.
 
 def home(request):
@@ -18,3 +18,15 @@ def tasks_list(request):
     return render(request, 'tasks.html',{
         'tasks':task
     })
+    
+def add_task(request):
+    
+    form = TaskForm()
+    
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('tasks_list')
+        
+    return render(request, 'add_task.html', {'form': form})

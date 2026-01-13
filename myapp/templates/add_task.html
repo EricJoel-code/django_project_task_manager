@@ -1,0 +1,13 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<head>
+    <title>Añadir Tarea</title>
+</head>
+<h1>Añadir Tarea</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+</form>
+{% endblock %}
