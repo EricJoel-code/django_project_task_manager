@@ -1,18 +1,41 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends "layouts/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Proyectos</title>
-</head>
+{% block content %}
+<container>
+    <!-- DERECHA: BUSCADOR + ICONOS -->
+    <div class="d-flex align-items-center gap-3">
 
-<body>
-    {% extends "layouts/base.html" %}
-    {% block content %}
-    <h1>DASHBOARD</h1>
-    <p>Bienvenido al Centro de Proyectos. Aquí puedes gestionar tus proyectos y tareas de manera eficiente.</p>
-    {% endblock %}
-</body>
+        <!-- BUSCADOR -->
+        <input type="search" class="form-control" placeholder="Search..." style="max-width: 200px;">
 
-</html>
+        <!-- NOTIFICACIONES -->
+        <button class="btn btn-light position-relative">
+            🔔
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                3
+            </span>
+        </button>
+
+        <!-- PERFIL -->
+        <button class="btn btn-light">
+            👤
+        </button>
+
+    </div>
+</container>
+<br>
+<section>
+    <div class="d-flex align-items-center gap-3">
+        <h1 class="m-0">DASHBOARD</h1>
+        <button type="button" class="button">
+            <span class="button__text">Add Project</span>
+            <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" viewBox="0 0 24 24"
+                    stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24"
+                    fill="none" class="svg">
+                    <line y2="19" y1="5" x2="12" x1="12"></line>
+                    <line y2="12" y1="12" x2="19" x1="5"></line>
+                </svg></span>
+        </button>
+    </div>
+</section>
+{% endblock %}
