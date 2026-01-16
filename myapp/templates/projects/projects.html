@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends "layouts/base.html" %}
+{% block content %}
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyectos</title>
 </head>
 
-<body>
-    {% extends "layouts/base.html" %}
-    {% block content %}
-    <h1>Proyectos</h1>
+<h1>Proyectos</h1>
 
-    <ol>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for project in projects %}
-        <li>{{ project.name }}</li>
+        <tr>
+            <th scope="row">{{ project.id }}</th>
+            <td>{{ project.name }}</td>
+        </tr>
         {% endfor %}
-    </ol>
-    {% endblock %}
-</body>
+</table>
 
-</html>
+
+{% endblock %}

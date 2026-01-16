@@ -1,15 +1,15 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-<container>
+<container class="container-fluid d-flex justify-content-between align-items-center py-3 border-bottom">
     <!-- DERECHA: BUSCADOR + ICONOS -->
-    <div class="d-flex align-items-center gap-3">
+    <div class="d-flex gap-5 align-items-center">
 
         <!-- BUSCADOR -->
-        <input type="search" class="form-control" placeholder="Search..." style="max-width: 200px;">
+        <input type="search" class="form-control me-5" placeholder="Search..." style="max-width: 200px;">
 
         <!-- NOTIFICACIONES -->
-        <button class="btn btn-light position-relative">
+        <button class="btn btn-light position-relative me-5">
             🔔
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 3
@@ -27,15 +27,14 @@
 <section>
     <div class="d-flex align-items-center gap-3">
         <h1 class="m-0">DASHBOARD</h1>
-        <button type="button" class="button">
-            <span class="button__text">Add Project</span>
-            <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" viewBox="0 0 24 24"
-                    stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24"
-                    fill="none" class="svg">
-                    <line y2="19" y1="5" x2="12" x1="12"></line>
-                    <line y2="12" y1="12" x2="19" x1="5"></line>
-                </svg></span>
-        </button>
+        <a href="{% url 'add_project' %}" class="button text-decoration-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 19v-7m0 0V5m0 7H5m7 0h7"></path>
+            </svg>
+            Add Project
+        </a>
+
     </div>
 </section>
 {% endblock %}
