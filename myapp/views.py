@@ -43,3 +43,22 @@ def add_project(request):
         
     return render(request, 'projects/add_project.html', {'form': form})
     
+
+def delete_task(request, task_id):
+    if request.method == 'POST':
+        task = get_object_or_404(Task, id=task_id)
+        task.delete()
+    return redirect('tasks_list')
+
+def complete_task(request, task_id):
+    if request.method == 'POST':
+        task = get_object_or_404(Task, id=task_id)
+        task.completed = not task.completed
+        task.save()
+    return redirect('tasks_list')
+
+def detail_project(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    return render(request, 'projects/detail_project.html', {
+        'project': project
+    })
