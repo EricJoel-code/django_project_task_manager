@@ -17,8 +17,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("myapp.urls")),
+    path("myapp/", include("myapp.urls")),
+    path("users/", include("users.urls")),
+    # Redirige '/' a la vista de login
+    path('', RedirectView.as_view(url='/users/login/', permanent=True)),
 ]
