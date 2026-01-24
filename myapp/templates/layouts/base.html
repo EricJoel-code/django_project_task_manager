@@ -33,6 +33,13 @@
                 <li class="nav-item">
                     <a class="nav-link text-light" href="{% url 'add_task' %}">➕ Add Task</a>
                 </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="dropdown-item" href="{% url 'logout' %}">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </a>
+                </li>
+                {% endif %}
             </ul>
         </aside>
 

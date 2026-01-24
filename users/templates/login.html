@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,14 +6,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}">
 </head>
 
 <body>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Iniciar Sesión</button>
-    </form>
+    <div class="form-container">
+        <p class="title">Login</p>
+        <form method="post" class="form">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="" required>
+                <div class="forgot">
+                    <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
+                </div>
+            </div>
+            <button type="submit" class="sign">Sign in</button>
+        </form>
+        <div class="social-message">
+            <div class="line"></div>
+            <p class="message">Login with social accounts</p>
+            <div class="line"></div>
+        </div>
+        <div class="social-icons">
+            <button aria-label="Log in with Google" class="icon">
+                <img src="{% static 'icons/google.svg' %}" alt="Google">
+            </button>
+
+            <button aria-label="Log in with Twitter" class="icon">
+                <img src="{% static 'icons/twitter.svg' %}" alt="Twitter">
+            </button>
+
+            <button aria-label="Log in with GitHub" class="icon">
+                <img src="{% static 'icons/github.svg' %}" alt="GitHub">
+            </button>
+        </div>
+        <p class="signup">Don't have an account?
+            <a rel="noopener noreferrer" href="{% url 'register' %}" class="">Sign up</a>
+        </p>
+    </div>
 </body>
 
 </html>
