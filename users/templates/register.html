@@ -1,19 +1,78 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regsitro</title>
+    <title>Registro</title>
+    <link rel="stylesheet" href="{% static 'styles/register.css' %}">
 </head>
 
 <body>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Registrarse</button>
-    </form>
-    <p><a href="{% url 'login' %}">¿Ya tienes cuenta? Inicia sesión aquí</a></p>
+
+    <main class="page">
+        <section class="auth-container">
+
+            <form method="post" class="form">
+                {% csrf_token %}
+
+                <p class="title">Register</p>
+                <p class="message">Signup now and get full access to our app.</p>
+
+                <label>
+                    {{ form.username }}
+                    <span>Username</span>
+                </label>
+
+                <div class="flex">
+                    <label>
+                        {{ form.first_name }}
+                        <span>Firstname</span>
+                    </label>
+
+                    <label>
+                        {{ form.last_name }}
+                        <span>Lastname</span>
+                    </label>
+                </div>
+
+                <label>
+                    {{ form.email }}
+                    <span>Email</span>
+                </label>
+
+                <label>
+                    {{ form.password1 }}
+                    <span>Password</span>
+                </label>
+
+                <label>
+                    {{ form.password2 }}
+                    <span>Confirm password</span>
+                </label>
+
+                <button type="submit" class="submit">Submit</button>
+
+                <p class="signin">
+                    Already have an account ?
+                    <a href="{% url 'login' %}">Signin</a>
+                </p>
+
+                {% if form.errors %}
+                <div class="errors">
+                    {% for field in form %}
+                    {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </form>
+
+        </section>
+    </main>
+
 </body>
 
 </html>

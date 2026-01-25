@@ -1,0 +1,209 @@
+/* =====================
+   RESET Y BASE
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* =====================
+   PAGE LAYOUT
+===================== */
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e3a8a, #312e81);
+    padding: 1.5rem;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    justify-content: center;
+}
+
+/* =====================
+   FORM (TU BASE)
+===================== */
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================
+   TITLE
+===================== */
+.title {
+    font-size: 28px;
+    color: royalblue;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.title::before,
+.title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0;
+    background-color: royalblue;
+}
+
+.title::after {
+    animation: pulse 1s linear infinite;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* =====================
+   TEXT
+===================== */
+.message,
+.signin {
+    color: rgba(88, 87, 87, 0.82);
+    font-size: 14px;
+}
+
+.signin {
+    text-align: center;
+}
+
+.signin a {
+    color: royalblue;
+    text-decoration: none;
+}
+
+.signin a:hover {
+    text-decoration: underline;
+}
+
+/* =====================
+   INPUTS
+===================== */
+.input {
+    width: 100%;
+    padding: 10px 10px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(105, 105, 105, 0.4);
+    outline: none;
+}
+
+/* FLOAT LABEL */
+.form label {
+    position: relative;
+}
+
+.form label span {
+    position: absolute;
+    left: 12px;
+    top: 14px;
+    color: grey;
+    font-size: 0.9em;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.input:focus+span,
+.input:not(:placeholder-shown)+span {
+    top: 30px;
+    font-size: 0.7em;
+    font-weight: 600;
+}
+
+.input:focus+span {
+    color: royalblue;
+}
+
+.input:not(:placeholder-shown):valid+span {
+    color: green;
+}
+
+/* =====================
+   FLEX
+===================== */
+.flex {
+    display: flex;
+    gap: 6px;
+}
+
+@media (max-width: 480px) {
+    .flex {
+        flex-direction: column;
+    }
+}
+
+/* =====================
+   BUTTON
+===================== */
+.submit {
+    margin-top: 6px;
+    background-color: royalblue;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.submit:hover {
+    background-color: rgb(56, 90, 194);
+    transform: translateY(-1px);
+}
+
+/* =====================
+   ERRORS (ESTABLES)
+===================== */
+.errors {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #fee2e2;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #991b1b;
+}
