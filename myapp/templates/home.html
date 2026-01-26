@@ -2,6 +2,12 @@
 {% load static %}
 
 {% block content %}
+
+<head>
+    <title>
+        Dashboard
+    </title>
+</head>
 <container class="container-fluid d-flex justify-content-between align-items-center py-3 border-bottom">
     <!-- DERECHA: BUSCADOR + ICONOS -->
     <div class="d-flex gap-5 align-items-center">
@@ -18,9 +24,15 @@
         </button>
 
         <!-- PERFIL -->
-        <button class="btn btn-light">
-            👤
-        </button>
+
+        <a href="{% url 'profile' %}">
+            <div>
+                <button class="btn btn-light">
+                    <img src="{% static 'icons/profile.svg' %}" alt="profile">
+                </button>
+            </div>
+        </a>
+
 
     </div>
 </container>

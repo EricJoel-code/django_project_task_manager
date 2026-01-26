@@ -1,16 +1,12 @@
 {% extends "layouts/base.html" %}
 {% block content %}
 
-<head>
-    <title>Detalle del Proyecto</title>
-</head>
-
 <h1>Proyecto: {{ project.name }}</h1>
 
 <section>
     <h2>Tareas del Proyecto</h2>
     <ul>
-        {% for task in project.task_set.all %}
+        {% for task in project.tasks.all %}
         <li>
             <div class="d-flex align-items-center gap-2">
                 <h3 class="mb-0">{{ task.title }}</h3>
@@ -29,7 +25,7 @@
             <form action="{% url 'delete_task' task.id %}" method="post"
                 onsubmit="return confirm('¿Eliminar esta tarea?');">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-danger">🗑️ Eliminar</button>
+                <button type="submit" class="btn btn-danger btn-sm">🗑️ Eliminar</button>
             </form>
 
             <form action="{% url 'complete_task' task.id %}" method="post"
@@ -52,5 +48,6 @@
         <p>No hay tareas asociadas a este proyecto.</p>
         {% endfor %}
     </ul>
+</section>
 
-    {% endblock %}
+{% endblock %}

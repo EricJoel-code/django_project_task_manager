@@ -126,7 +126,7 @@ body {
 ===================== */
 .input {
     width: 100%;
-    padding: 10px 10px 20px;
+    padding: 10px 42px 20px 10px;
     border-radius: 10px;
     border: 1px solid rgba(105, 105, 105, 0.4);
     outline: none;
@@ -195,6 +195,26 @@ body {
     background-color: rgb(56, 90, 194);
     transform: translateY(-1px);
 }
+
+.password-field {
+    position: relative;
+}
+
+.password-field .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    z-index: 2;
+}
+
+.password-field .toggle-password:hover {
+    color: royalblue;
+}
+
 
 /* =====================
    ERRORS (ESTABLES)

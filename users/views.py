@@ -3,6 +3,7 @@ from .forms import UserRegistrationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 # Vista de registro de usuario
 def register(request):
@@ -25,8 +26,13 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         return '/myapp/home/'
     
-    
+# Vista de cierre de sesión
+@login_required
 def singout(request):
     logout(request)
     return redirect('login')
     
+# Vista para gestionar el perfil de usuario
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
