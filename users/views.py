@@ -26,6 +26,13 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         return '/myapp/home/'
     
+    def form_invalid(self, form):
+        # Si la autenticación falla, renderiza el formulario con un mensaje de error
+        return render (self.request, self.template_name, {
+            'form': form,
+            'error_message': 'Invalid username or password.'
+        })
+    
 # Vista de cierre de sesión
 @login_required
 def singout(request):

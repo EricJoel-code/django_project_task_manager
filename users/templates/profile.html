@@ -1,13 +1,55 @@
 {% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock %}
+
 {% block content %}
 
 <head>
-    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
 </head>
 
-<h1>User Profile</h1>
-<p>Username: {{ request.user.username }}</p>
-<p>First Name: {{ request.user.first_name }}</p>
-<p>Last Name: {{ request.user.last_name }}</p>
-<p>Email: {{ request.user.email }}</p>
+<main class="profile-page">
+    <section class="profile-card">
+
+        <h2 class="page-title">Edit Profile</h2>
+
+        <!-- AVATAR -->
+        <div class="avatar-section">
+            <img src="{% static 'icons/Photo.jpeg' %}" alt="Avatar" class="avatar">
+
+            <div class="avatar-info">
+                <button class="upload-btn">Upload new photo</button>
+                <p>At least 800×800 px recommended.<br>JPG or PNG allowed.</p>
+            </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="info-card">
+            <div class="info-header">
+                <h3>Personal Info</h3>
+                <button class="edit-btn">Edit</button>
+            </div>
+
+            <div class="info-grid">
+                <div>
+                    <span>Full Name</span>
+                    <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
+                </div>
+
+                <div>
+                    <span>Email</span>
+                    <p>{{ request.user.email }}</p>
+                </div>
+
+                <div>
+                    <span>Username</span>
+                    <p>{{ request.user.username }}</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</main>
+
 {% endblock %}
