@@ -16,8 +16,11 @@
 
         <!-- AVATAR -->
         <div class="avatar-section">
-            <img src="{% static 'icons/Photo.jpeg' %}" alt="Avatar" class="avatar">
-
+            {% if request.user.profile.avatar %}
+            <img src="{{ request.user.profile.avatar.url }}">
+            {% else %}
+            <img src="{% static 'icons/avatar-default.png' %}">
+            {% endif %}
             <div class="avatar-info">
                 <button class="upload-btn">Upload new photo</button>
                 <p>At least 800×800 px recommended.<br>JPG or PNG allowed.</p>
