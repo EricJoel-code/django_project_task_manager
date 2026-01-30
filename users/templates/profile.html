@@ -5,52 +5,86 @@
 
 {% block content %}
 
-<head>
-    <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
-</head>
+<link rel="stylesheet" href="{% static 'styles/profile.css' %}">
 
 <main class="profile-page">
     <section class="profile-card">
 
         <h2 class="page-title">Edit Profile</h2>
 
-        <!-- AVATAR -->
-        <div class="avatar-section">
-            {% if request.user.profile.avatar %}
-            <img src="{{ request.user.profile.avatar.url }}">
-            {% else %}
-            <img src="{% static 'icons/avatar-default.png' %}">
-            {% endif %}
-            <div class="avatar-info">
-                <button class="upload-btn">Upload new photo</button>
-                <p>At least 800×800 px recommended.<br>JPG or PNG allowed.</p>
-            </div>
-        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-        <!-- INFO -->
-        <div class="info-card">
-            <div class="info-header">
-                <h3>Personal Info</h3>
-                <button class="edit-btn">Edit</button>
-            </div>
+            <!-- AVATAR -->
+            <div class="avatar-section">
+                {% if request.user.profile.avatar %}
+                <img src="{{ request.user.profile.avatar.url }}" class="avatar">
+                {% else %}
+                <img src="{% static 'icons/avatar-default.png' %}" class="avatar">
+                {% endif %}
 
-            <div class="info-grid">
-                <div>
-                    <span>Full Name</span>
-                    <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
+                <div class="container">
+                    <div class="folder">
+                        <div class="front-side">
+                            <div class="tip"></div>
+                            <div class="cover"></div>
+                        </div>
+                        <div class="back-side cover"></div>
+                    </div>
+
+                    <label class="custom-file-upload">
+                        {{ profile_form.avatar }}
+                        <span>Cambiar Avatar</span>
+                    </label>
                 </div>
 
-                <div>
-                    <span>Email</span>
-                    <p>{{ request.user.email }}</p>
+                <div class="avatar-info">
+                    <p>
+                        Se recomienda al menos 800×800 px.<br>
+                        Se permiten JPG, PNG o JPEG.
+                    </p>
                 </div>
 
-                <div>
-                    <span>Username</span>
-                    <p>{{ request.user.username }}</p>
+            </div>
+
+            <!-- INFO -->
+            <div class="info-card">
+                <div class="info-header">
+                    <h3>Personal Info</h3>
+                </div>
+
+                <div class="info-grid">
+                    <div>
+                        <span>Nombre</span>
+                        {{ user_form.first_name }}
+                    </div>
+
+                    <div>
+                        <span>Apellido</span>
+                        {{ user_form.last_name }}
+                    </div>
+
+                    <div>
+                        <span>Email</span>
+                        {{ user_form.email }}
+                    </div>
+
+                    <div>
+                        <span>Nombre de usuario</span>
+                        {{ user_form.username }}
+                    </div>
+
+                    <div>
+                        <span>Teléfono</span>
+                        {{ profile_form.phone_number }}
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="actions">
+                <button type="submit" class="save-btn">Save changes</button>
+            </div>
+        </form>
 
     </section>
 </main>
