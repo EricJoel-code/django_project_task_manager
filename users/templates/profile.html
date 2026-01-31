@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 {% load static %}
 
-{% block title %}Edit Profile{% endblock %}
+{% block title %}Editar Perfil{% endblock %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
 <main class="profile-page">
     <section class="profile-card">
 
-        <h2 class="page-title">Edit Profile</h2>
+        <h2 class="page-title">Editar Perfil</h2>
 
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -50,42 +50,42 @@
             <!-- INFO -->
             <div class="info-card">
                 <div class="info-header">
-                    <h3>Personal Info</h3>
+                    <h3>Información Personal</h3>
                 </div>
-
                 <div class="info-grid">
-                    <div>
-                        <span>Nombre</span>
+
+                    <div class="coolinput">
+                        <label for="input" class="text">Nombre:</label>
                         {{ user_form.first_name }}
                     </div>
 
-                    <div>
-                        <span>Apellido</span>
+                    <div class="coolinput">
+                        <label for="input" class="text">Apellido:</label>
                         {{ user_form.last_name }}
                     </div>
 
-                    <div>
-                        <span>Email</span>
+                    <div class="coolinput">
+                        <label for="input" class="text">Correo Electrónico:</label>
                         {{ user_form.email }}
                     </div>
 
-                    <div>
-                        <span>Nombre de usuario</span>
+                    <div class="coolinput">
+                        <label for="input" class="text">Nombre de usuario:</label>
                         {{ user_form.username }}
                     </div>
 
-                    <div>
-                        <span>Teléfono</span>
+                    <div class="coolinput">
+                        <label for="input" class="text">Teléfono:</label>
                         {{ profile_form.phone_number }}
                     </div>
                 </div>
             </div>
-
+            <br>
             <div class="actions">
-                <button type="submit" class="save-btn">Save changes</button>
+                <button type="submit" class="upload-btn">Guardar Cambios</button>
             </div>
-        </form>
 
+        </form>
     </section>
 </main>
 

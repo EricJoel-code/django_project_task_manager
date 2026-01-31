@@ -1,16 +1,34 @@
 {% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Añadir Proyecto{% endblock %}
+
 {% block content %}
 
-<head>
-    <title>Añadir Proyecto</title>
-</head>
+<link rel="stylesheet" href="{% static 'styles/add_project.css' %}">
 
-<h1 class="text-center">Añadir Proyecto</h1>
+<main class="project-page">
+    <section class="project-card">
 
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Guardar Proyecto</button>
-</form>
+        <h1 class="page-title">Añadir Proyecto</h1>
+        <p class="page-subtitle">Crea un nuevo proyecto indicando su nombre</p>
+
+        <form method="post" class="project-form">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Nombre del proyecto</label>
+                {{ form.name }}
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn-primary">
+                    Guardar proyecto
+                </button>
+            </div>
+        </form>
+
+    </section>
+</main>
 
 {% endblock %}
