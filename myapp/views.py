@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Project, Task
 from .forms import TaskForm, ProjectForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 
 # Vista home de la web
@@ -29,10 +30,10 @@ def tasks_list(request):
 @login_required
 def add_task(request):
     
-    form = TaskForm()
+    form = TaskForm(user=request.user)
     
     if request.method == 'POST':
-        form = TaskForm(request.POST)
+        form = TaskForm(request.POST, user=request.user)
         if form.is_valid():
             task = form.save(commit=False)
             task.user = request.user
@@ -45,15 +46,16 @@ def add_task(request):
 @login_required
 def add_project(request):
     
-    form = ProjectForm()
+    form = ProjectForm(user=request.user)
     
     if request.method == 'POST':
         form = ProjectForm(request.POST)
         if form.is_valid():
-            project = form.save(commit=False)
+            project = form.save(commit=False, user=request.user)
             project.user = request.user
             project.save()
-            return redirect('projects_list')
+            messages.success(request, 'Proyecto creado correctamente.')
+            return redirect('add_project')
         
     return render(request, 'projects/add_project.html', {'form': form})
     

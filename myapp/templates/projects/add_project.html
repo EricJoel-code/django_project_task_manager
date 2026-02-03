@@ -3,6 +3,7 @@
 
 {% block title %}Añadir Proyecto{% endblock %}
 
+
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'styles/add_project.css' %}">
@@ -13,12 +14,28 @@
         <h1 class="page-title">Añadir Proyecto</h1>
         <p class="page-subtitle">Crea un nuevo proyecto indicando su nombre</p>
 
+        {% if messages %}
+        <div>
+            {% for message in messages %}
+            <div class="alert {{ message.tags}}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <form method="post" class="project-form">
             {% csrf_token %}
 
             <div class="form-group">
                 <label for="{{ form.name.id_for_label }}">Nombre del proyecto</label>
                 {{ form.name }}
+
+                {% if form.name.errors %}
+                <span class="error-text">
+                    {{ form.name.errors.0 }}
+                </span>
+                {% endif %}
             </div>
 
             <div class="actions">
