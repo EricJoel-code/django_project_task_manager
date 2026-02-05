@@ -1,0 +1,131 @@
+/* Layout general */
+.projects-page {
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* Card principal */
+.projects-card {
+    width: 100%;
+    max-width: 900px;
+    background-color: #111827;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Header */
+.projects-header {
+    margin-bottom: 1.5rem;
+}
+
+.projects-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #f9fafb;
+    margin-bottom: 0.25rem;
+}
+
+.projects-header p {
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+/* Tabla */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.projects-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.projects-table thead {
+    background-color: #1f2933;
+}
+
+.projects-table th,
+.projects-table td {
+    padding: 0.9rem 1rem;
+    text-align: left;
+}
+
+.projects-table th {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+    text-transform: uppercase;
+}
+
+.projects-table tbody tr {
+    border-bottom: 1px solid #1f2937;
+    transition: background-color 0.2s ease;
+}
+
+.projects-table tbody tr:hover {
+    background-color: #1f2937;
+}
+
+.projects-table td {
+    color: #e5e7eb;
+    font-size: 0.95rem;
+}
+
+/* Botón */
+.btn-view {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-view:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Estado vacío */
+.empty-state {
+    text-align: center;
+    color: #9ca3af;
+    margin-top: 2rem;
+}
+
+/* Responsive: tabla en móvil */
+@media (max-width: 640px) {
+    .projects-table thead {
+        display: none;
+    }
+
+    .projects-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #1f2937;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .projects-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
+    }
+
+    .projects-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #9ca3af;
+    }
+}

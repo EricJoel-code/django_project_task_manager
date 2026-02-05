@@ -38,7 +38,8 @@ def add_task(request):
             task = form.save(commit=False)
             task.user = request.user
             task.save()
-            return redirect('tasks_list')
+            messages.success(request, 'Tarea creada correctamnete')
+            return redirect('add_task')
         
     return render(request, 'tasks/add_task.html', {'form': form})
 
@@ -46,7 +47,7 @@ def add_task(request):
 @login_required
 def add_project(request):
     
-    form = ProjectForm(user=request.user)
+    form = ProjectForm()
     
     if request.method == 'POST':
         form = ProjectForm(request.POST)

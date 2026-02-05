@@ -1,53 +1,71 @@
 {% extends "layouts/base.html" %}
+{% load static %}
 
 {% block title %}Tareas{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'styles/tasks.css' %}">
 
-<h1>Tareas</h1>
+<main class="page">
+    <section class="card">
+        <header class="card-header">
+            <h1>Tareas</h1>
+            <p class="subtitle">Listado de tareas registradas en el sistema</p>
+        </header>
 
-<section>
-    <ul>
-        {% for task in tasks %}
-        <li>
-            <div class="d-flex align-items-center gap-2">
-                <h2 class="mb-0">{{ task.title }}</h2>
+        <ul class="task-list">
+            {% for task in tasks %}
+            <li class="task-item {% if task.completed %}completed{% endif %}">
 
-                {% if not task.completed %}
-                <strong class="text-danger small">Pendiente</strong>
-                {% else %}
-                <strong class="text-success small">Completada</strong>
-                {% endif %}
-            </div>
+                <div class="task-header">
+                    <h2>{{ task.title }}</h2>
 
-            <hr>
+                    {% if task.completed %}
+                    <span class="status completed">Completada</span>
+                    {% else %}
+                    <span class="status pending">Pendiente</span>
+                    {% endif %}
+                </div>
 
-            <p>{{ task.description }}</p>
-            <p>Pertenece al Proyecto: {{ task.project }}</p>
+                <p class="task-description">
+                    {{ task.description }}
+                </p>
 
-            <form action="{% url 'delete_task' task.id %}" method="post"
-                onsubmit="return confirm('¿Eliminar esta tarea?');">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">🗑️ Eliminar</button>
-            </form>
+                <p class="task-project">
+                    Proyecto: <strong>{{ task.project }}</strong>
+                </p>
 
-            <form action="{% url 'complete_task' task.id %}" method="post"
-                onsubmit="return confirm('¿Cambiar estado de la tarea?')">
-                {% csrf_token %}
-                {% if task.completed %}
-                <button type="submit" class="btn btn-secondary btn-sm">
-                    ↩️ Undo
-                </button>
-                {% else %}
-                <button type="submit" class="btn btn-success btn-sm">
-                    ✅ Complete
-                </button>
-                {% endif %}
-            </form>
+                <div class="task-actions">
+                    <form action="{% url 'delete_task' task.id %}" method="post"
+                        onsubmit="return confirm('¿Eliminar esta tarea?');">
+                        {% csrf_token %}
+                        <button type="submit" class="btn danger">
+                            Eliminar
+                        </button>
+                    </form>
 
-            <hr>
-        </li>
-        {% endfor %}
-    </ul>
-</section>
+                    <form action="{% url 'complete_task' task.id %}" method="post"
+                        onsubmit="return confirm('¿Cambiar estado de la tarea?');">
+                        {% csrf_token %}
+                        {% if task.completed %}
+                        <button type="submit" class="btn secondary">
+                            Deshacer
+                        </button>
+                        {% else %}
+                        <button type="submit" class="btn success">
+                            Completar
+                        </button>
+                        {% endif %}
+                    </form>
+                </div>
+
+            </li>
+            {% empty %}
+            <li class="empty">
+                No hay tareas registradas.
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
 {% endblock %}

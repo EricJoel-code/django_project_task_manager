@@ -1,0 +1,174 @@
+/* ===== Layout general ===== */
+.page {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background-color: #f5f6f8;
+}
+
+/* ===== Card ===== */
+.card {
+    width: 100%;
+    max-width: 720px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Header ===== */
+.card-header {
+    margin-bottom: 1.5rem;
+}
+
+.card-header h1 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+/* ===== Lista ===== */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ===== Tarea ===== */
+.task-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.25rem;
+    background-color: #ffffff;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.task-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.task-item.completed {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+/* ===== Header tarea ===== */
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.task-header h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* ===== Estado ===== */
+.status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+}
+
+.status.pending {
+    background-color: #fef2f2;
+    color: #991b1b;
+}
+
+.status.completed {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+/* ===== Contenido ===== */
+.task-description {
+    margin: 0.75rem 0;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.task-project {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* ===== Acciones ===== */
+.task-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Variantes */
+.btn.success {
+    background-color: #22c55e;
+    color: #ffffff;
+}
+
+.btn.secondary {
+    background-color: #9ca3af;
+    color: #ffffff;
+}
+
+.btn.danger {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+/* ===== Empty state ===== */
+.empty {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6b7280;
+    padding: 2rem 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+    .card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .task-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
