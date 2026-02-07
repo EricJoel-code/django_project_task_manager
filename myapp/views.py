@@ -29,9 +29,16 @@ def projects_list(request):
 @login_required
 def tasks_list(request):
     task = Task.objects.filter(user=request.user)
-    return render(request, 'tasks/tasks.html',{
-        'tasks':task
-    })
+    
+    # Paginacion de tareas 
+    paginator = Paginator(task, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    context = {
+        'page_obj': page_obj
+    }
+    return render(request, 'tasks/tasks.html', context)
     
 # Vista para añadir las tareas    
 @login_required

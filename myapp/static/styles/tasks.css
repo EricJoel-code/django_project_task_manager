@@ -172,3 +172,20 @@
         width: 100%;
     }
 }
+
+.tasks-pagination {
+    margin-top: 1.75rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.tasks-pagination .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    padding-left: 0;
+    /* quita offset de Bootstrap */
+    margin: 0;
+}
