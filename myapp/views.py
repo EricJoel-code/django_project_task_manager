@@ -3,6 +3,7 @@ from .models import Project, Task
 from .forms import TaskForm, ProjectForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import Paginator
 # Create your views here.
 
 # Vista home de la web
@@ -14,9 +15,15 @@ def home(request):
 @login_required
 def projects_list(request):
     project = Project.objects.filter(user=request.user)
-    return render(request, 'projects/projects.html', {
-        'projects': project
-    })
+    
+    # Paginación de proyectos
+    paginator = Paginator(project, 5) # Mostrar 5 proyectos por página
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'page_obj': page_obj
+    }
+    return render(request, 'projects/projects.html', context)
 
 # Vista para listar las tareas
 @login_required

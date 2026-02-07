@@ -129,3 +129,52 @@
         color: #9ca3af;
     }
 }
+
+/* ===========================
+   Paginador – estilo proyectos
+   =========================== */
+
+.projects-pagination {
+    margin-top: 2rem;
+}
+
+.projects-pagination .pagination {
+    gap: 0.35rem;
+}
+
+.projects-pagination .page-link {
+    background-color: #111827;
+    color: #e5e7eb;
+    border: 1px solid #1f2937;
+    border-radius: 0.5rem;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+.projects-pagination .page-link:hover {
+    background-color: #1f2937;
+    color: #ffffff;
+    border-color: #374151;
+}
+
+/* Página activa */
+.projects-pagination .page-item.active .page-link {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border-color: transparent;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+/* Quitar efectos Bootstrap */
+.projects-pagination .page-link:focus {
+    box-shadow: none;
+}
+
+/* Flechas */
+.projects-pagination .page-link span {
+    font-size: 0.9rem;
+}
