@@ -118,6 +118,8 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+LOGIN_URL = "/users/login"
+
 # Media files configuration
 
 MEDIA_URL = '/media/'
