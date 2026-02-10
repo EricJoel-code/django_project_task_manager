@@ -1,90 +1,136 @@
-🚀 Django Project:
-Este es un proyecto de práctica desarrollado para dominar las funcionalidades principales de Django Web Framework. El objetivo es construir una aplicación funcional mientras se exploran conceptos desde el ORM hasta la autenticación y el despliegue.
+# 📋 Sistema de Gestión de Proyectos y Tareas
 
-📋 Funcionalidades Implementadas
-En este proyecto he puesto en práctica los siguientes pilares de Django:
+Aplicación web desarrollada con **Django** para la gestión de proyectos y tareas, que implementa un **CRUD completo**, autenticación de usuarios y una interfaz gráfica funcional.
 
-Manejo de Modelos y ORM: Creación de bases de datos relacionales, migraciones y consultas complejas.
+El sistema permite a los usuarios registrarse, iniciar sesión y acceder a un **dashboard** desde donde pueden administrar su perfil, proyectos y tareas, haciendo uso del **ORM de Django** y una base de datos **SQLite** por defecto.
 
-Sistema de Plantillas (Django Templates): Uso de herencia de bloques, filtros y etiquetas lógicas.
+---
 
-Vistas Basadas en Funciones (FBV) y Clases (CBV): Implementación de lógica de negocio y CRUD completo.
+## 🚀 Características Principales
 
-Autenticación de Usuarios: Registro, inicio de sesión y gestión de permisos/grupos.
+* Registro e inicio de sesión de usuarios
+* Autenticación y cierre de sesión
+* Dashboard principal para el usuario
+* Gestión de perfil:
 
-Formularios (Django Forms): Validación de datos y formularios vinculados a modelos (ModelForm).
+  * Avatar por defecto
+  * Actualización de datos personales
+  * Carga de foto de perfil
+* Gestión de proyectos (CRUD completo)
+* Gestión de tareas asociadas a proyectos (CRUD completo)
+* Uso del ORM de Django para la persistencia de datos
+* Interfaz gráfica basada en templates HTML
+* Base de datos SQLite (configuración por defecto)
 
-Panel de Administración: Personalización de admin.py para gestionar los datos visualmente.
+---
 
-🛠️ Tecnologías Utilizadas
-Lenguaje: Python 3.12.2
+## 🛠️ Tecnologías Utilizadas
 
-Framework: Django 6.0
+* Python
+* Django
+* HTML (Django Templates)
+* CSS
+* JavaScript
+* SQLite
+* Django ORM
+* Git & GitHub
 
-Base de Datos: SQLite (Desarrollo) / PostgreSQL (Opcional)
+---
 
-Frontend: Bootstrap / CSS puro (opcional)
+## 🧱 Estructura del Proyecto
 
-⚙️ Instalación y Configuración
-Sigue estos pasos para ejecutar el proyecto localmente:
+```text
+myweb/                  # Proyecto principal
+│
+├── users/               # App de gestión de usuarios
+│   ├── templates/       # Templates HTML
+│   ├── static/
+│   │   ├── icons/       # Íconos SVG
+│   │   ├── js/          # Archivos JavaScript
+│   │   └── styles/      # Archivos CSS
+│   └── ...
+│
+├── myapp/               # App de proyectos y tareas
+│   ├── templates/       # Templates HTML
+│   ├── static/
+│   │   ├── icons/       # Íconos SVG
+│   │   ├── js/          # Archivos JavaScript
+│   │   └── styles/      # Archivos CSS
+│   └── ...
+│
+├── db.sqlite3           # Base de datos
+├── manage.py
+└── README.md
+```
 
-Clona el repositorio:
+---
 
-Bash
+## 👤 Gestión de Usuarios
 
-git clone https://github.com/EricJoel-code/Django-Project.git
-cd Django-Project
-Crea y activa un entorno virtual:
+* Registro de nuevos usuarios
+* Inicio y cierre de sesión
+* Gestión de perfil
+* Uso de lógica condicional en templates, por ejemplo:
 
-Bash
+```django
+{% if user.first_name %}
+  <p>Bienvenido, {{ user.first_name }}</p>
+{% endif %}
+```
 
+---
+
+## ▶️ Ejecución del Proyecto
+
+### 1️⃣ Crear y activar entorno virtual
+
+```bash
 python -m venv venv
-# En Windows:
-venv\Scripts\activate
-# En macOS/Linux:
-source venv/bin/activate
-Instala las dependencias:
+source venv/bin/activate  # Linux / Mac
+venv\Scripts\activate     # Windows
+```
 
-Bash
+### 2️⃣ Instalar dependencias
 
+```bash
 pip install -r requirements.txt
-Realiza las migraciones:
+```
 
-Bash
+### 3️⃣ Ejecutar migraciones
 
-python manage.py makemigrations
+```bash
 python manage.py migrate
-Crea un superusuario (para el panel admin):
+```
 
-Bash
+### 4️⃣ Iniciar servidor de desarrollo
 
-python manage.py createsuperuser
-Inicia el servidor de desarrollo:
-
-Bash
-
+```bash
 python manage.py runserver
-Visita http://127.0.0.1:8000 en tu navegador.
+```
 
-📂 Estructura del Proyecto
-/core: Configuración principal del proyecto (settings.py, urls.py).
+Accede desde el navegador a:
 
-/apps: Carpeta contenedora de las diferentes aplicaciones del proyecto.
+```text
+http://127.0.0.1:8000/
+```
 
-/templates: Plantillas HTML globales y específicas.
+---
 
-/static: Archivos CSS, JS e imágenes.
+## 📌 Estado del Proyecto
 
-/media: Archivos subidos por los usuarios.
+El proyecto se encuentra funcional, aunque aún se contemplan **mejoras futuras**, como:
 
-🧠 Aprendizajes Clave
-Durante el desarrollo de este proyecto, aprendí a:
+* Mejoras en la interfaz de usuario
+* Roles y permisos avanzados
+* Optimización de vistas y consultas
+* Migración a otra base de datos (PostgreSQL / MySQL)
 
-Configurar rutas dinámicas mediante urls.py.
+---
 
-Utilizar el contexto para pasar datos de la base de datos a la interfaz.
+## ⚠️ Nota
 
-Proteger rutas para que solo usuarios autenticados puedan acceder.
+Este proyecto fue desarrollado con fines educativos y de práctica, aplicando conceptos fundamentales de Django, autenticación, ORM y arquitectura MVT.
 
-✒️ Autor
-Eric Cacuango - https://github.com/EricJoel-code
+---
+
+⭐ Si te resulta útil o interesante, ¡no olvides darle una estrella al repositorio!
