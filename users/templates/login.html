@@ -1,3 +1,4 @@
+{% load socialaccount %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
@@ -61,9 +62,9 @@
                 </div>
 
                 <div class="social-icons">
-                    <button class="icon">
+                    <a href="{% provider_login_url 'google' process='login' %}" class="icon">
                         <img src="{% static 'icons/google.svg' %}" alt="Google">
-                    </button>
+                    </a>
                     <button class="icon">
                         <img src="{% static 'icons/twitter.svg' %}" alt="Twitter">
                     </button>

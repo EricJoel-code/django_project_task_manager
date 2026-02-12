@@ -25,6 +25,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("myapp/", include("myapp.urls")),
     path("users/", include("users.urls")),
+    path("accounts/",include("allauth.urls")),
     # Redirige '/' a la vista de login
     path('', RedirectView.as_view(url='/users/login/', permanent=True)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
